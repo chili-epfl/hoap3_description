@@ -72,10 +72,26 @@ def getpose(pose, parent = None):
 
     #rpy = transformations.euler_from_matrix(rot_mat, 'rzxy')
     # transformation based on: http://planning.cs.uiuc.edu/node103.html
-    yaw = math.atan2(r[1,0], r[0,0])
-    pitch = math.atan2(-r[2,0], math.sqrt(math.pow(r[2,1],2) + math.pow(r[2,2],2)))
-    roll = math.atan2(r[2,1], r[2,2])
+    #yaw = math.atan2(r[1,0], r[0,0])
+    #pitch = math.atan2(-r[2,0], math.sqrt(math.pow(r[2,1],2) + math.pow(r[2,2],2)))
+    #roll = math.atan2(r[2,1], r[2,2])
 
+    # Based on INtroduction to Robotics, J. Craig, p.43
+    # pitch -> beta
+    pitch = math.atan2(-r[2,0], math.sqrt(math.pow(r[0,0],2) + math.pow(r[1,0],2)))
+    
+    if abs(pitch - 1.57079) < 0.001: # pitch = 90deg
+        yaw = 0.0
+        roll = math.atan2(r[0,1], r[1,1])
+    elif abs(pitch + 1.57079) < 0.001: # pitch = -90deg
+        yaw = 0.0
+        roll = -math.atan2(r[0,1], r[1,1])
+
+    else:
+        # yaw -> alpha
+        yaw = math.atan2(r[1,0]/math.cos(pitch), r[0,0]/math.cos(pitch))
+        # roll -> gamma
+        roll = math.atan2(r[2,1]/math.cos(pitch), r[2,2]/math.cos(pitch))
     return xyz, (roll, pitch, yaw), r
 
 def getlimits(joint, offset = 0.0):
