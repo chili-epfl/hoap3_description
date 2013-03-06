@@ -64,7 +64,7 @@ def getpose(pose, parent = None):
 
     xyz = [float(i) for i in pose.find("Origin").text.split()]
 
-    r = numpy.reshape([float(i) for i in re.split("\W+", pose.find("Orient").text)[1:-1]], (3,3))
+    r = numpy.reshape([float(i) for i in pose.find("Orient").text.split()], (3,3))
 
     if parent is not None:
         # Rparent->joint = (Rworld->parent)^-1 . Rworld->joint
