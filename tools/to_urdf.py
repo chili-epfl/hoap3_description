@@ -16,8 +16,8 @@ def prettify(elem):
     return reparsed.toprettyxml(indent="  ")
 
 
-shapexml = "../shape.xml"
-structurexml = "../structure.xml"
+shapexml = "shape.xml"
+structurexml = "structure.xml"
 
 robot_name = "hoap-3"
 
@@ -173,9 +173,9 @@ def makelinks(node, urdf_robot):
         if visual is not None:
             link.append(visual)
 
-        #inertial = getinertial(name)
-        #if inertial is not None:
-        #    link.append(inertial)
+        inertial = getinertial(name)
+        if inertial is not None:
+            link.append(inertial)
  
 
 

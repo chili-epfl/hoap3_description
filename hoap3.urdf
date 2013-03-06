@@ -8,6 +8,10 @@
         <mesh filename="package://hoap3_description/meshes/BODY_LINK01.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="3.26"/>
+      <origin xyz="-0.049489 0.000892912 -0.0408259"/>
+    </intertial>
   </link>
   <link name="H_PAN">
     <visual>
@@ -16,8 +20,17 @@
         <mesh filename="package://hoap3_description/meshes/HEAD_LINK01.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="7.10e-02"/>
+      <origin xyz="0.00539731 -0.00158067 0.0564034"/>
+    </intertial>
   </link>
-  <link name="H_TILT"/>
+  <link name="H_TILT">
+    <intertial>
+      <mass value="0"/>
+      <origin xyz="0.0 0.0 0.0"/>
+    </intertial>
+  </link>
   <link name="H_ROLL">
     <visual>
       <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -25,6 +38,10 @@
         <mesh filename="package://hoap3_description/meshes/HEAD_LINK02.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="4.12e-01"/>
+      <origin xyz="-0.00103952 -0.00517985 1.82267e-05"/>
+    </intertial>
   </link>
   <link name="HEAD"/>
   <link name="EYE"/>
@@ -37,6 +54,10 @@
         <mesh filename="package://hoap3_description/meshes/RARM_LINK01.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="2.10e-01"/>
+      <origin xyz="8.28367e-05 0.00666808 0.00634824"/>
+    </intertial>
   </link>
   <link name="R_SAA">
     <visual>
@@ -45,6 +66,10 @@
         <mesh filename="package://hoap3_description/meshes/RARM_LINK02.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="2.34e-01"/>
+      <origin xyz="-0.00065756 -0.0463848 -0.00377395"/>
+    </intertial>
   </link>
   <link name="R_SHR">
     <visual>
@@ -53,6 +78,10 @@
         <mesh filename="package://hoap3_description/meshes/RARM_LINK03.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="1.965e-01"/>
+      <origin xyz="-0.00272189 -0.00160245 -0.00220452"/>
+    </intertial>
   </link>
   <link name="R_EB">
     <visual>
@@ -61,10 +90,14 @@
         <mesh filename="package://hoap3_description/meshes/RARM_LINK04.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="2.16e-01"/>
+      <origin xyz="0.00100237 0.0664225 -0.000615512"/>
+    </intertial>
   </link>
   <link name="R_WR">
     <visual>
-      <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.133"/>
+      <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.133"/>
       <geometry>
         <mesh filename="package://hoap3_description/meshes/RARM_LINK05.dae"/>
       </geometry>
@@ -77,6 +110,10 @@
         <mesh filename="package://hoap3_description/meshes/LARM_LINK01.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="2.10e-01"/>
+      <origin xyz="-3.64197e-05 0.00664174 -0.00634825"/>
+    </intertial>
   </link>
   <link name="L_SAA">
     <visual>
@@ -85,6 +122,10 @@
         <mesh filename="package://hoap3_description/meshes/LARM_LINK02.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="2.34e-01"/>
+      <origin xyz="0.000747218 -0.0463619 -0.00377403"/>
+    </intertial>
   </link>
   <link name="L_SHR">
     <visual>
@@ -93,6 +134,10 @@
         <mesh filename="package://hoap3_description/meshes/LARM_LINK03.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="1.965e-01"/>
+      <origin xyz="-0.00270991 0.00160227 -0.00209019"/>
+    </intertial>
   </link>
   <link name="L_EB">
     <visual>
@@ -101,6 +146,10 @@
         <mesh filename="package://hoap3_description/meshes/LARM_LINK04.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="2.16e-01"/>
+      <origin xyz="0.000962091 0.0664766 0.000558629"/>
+    </intertial>
   </link>
   <link name="L_WR">
     <visual>
@@ -117,6 +166,10 @@
         <mesh filename="package://hoap3_description/meshes/BODY_LINK02.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="4.17e-01"/>
+      <origin xyz="-0.0322707 0.0111375 -0.000329172"/>
+    </intertial>
   </link>
   <link name="R_LR">
     <visual>
@@ -125,6 +178,10 @@
         <mesh filename="package://hoap3_description/meshes/RLEG_LINK01.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="5.87e-02"/>
+      <origin xyz="-0.003015 -0.0022399 0.0335846"/>
+    </intertial>
   </link>
   <link name="R_LAA">
     <visual>
@@ -133,6 +190,10 @@
         <mesh filename="package://hoap3_description/meshes/RLEG_LINK02.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="2.10e-01"/>
+      <origin xyz="-0.00272697 0.00113482 0.0023778"/>
+    </intertial>
   </link>
   <link name="R_LFE">
     <visual>
@@ -141,6 +202,10 @@
         <mesh filename="package://hoap3_description/meshes/RLEG_LINK03.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="5.19e-01"/>
+      <origin xyz="-0.0698208 0.00616508 -0.00326392"/>
+    </intertial>
   </link>
   <link name="R_KN">
     <visual>
@@ -149,6 +214,10 @@
         <mesh filename="package://hoap3_description/meshes/RLEG_LINK04.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="3.28e-01"/>
+      <origin xyz="-0.0508521 0.00536785 -0.0046975"/>
+    </intertial>
   </link>
   <link name="R_AFE">
     <visual>
@@ -157,6 +226,10 @@
         <mesh filename="package://hoap3_description/meshes/RLEG_LINK05.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="1.95e-01"/>
+      <origin xyz="0.00293669 0.00366853 -0.00133746"/>
+    </intertial>
   </link>
   <link name="R_AAA">
     <visual>
@@ -165,6 +238,10 @@
         <mesh filename="package://hoap3_description/meshes/RLEG_LINK06.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="1.54e-01"/>
+      <origin xyz="-0.0292236 0.00324167 0.00827642"/>
+    </intertial>
   </link>
   <link name="R_FOOT"/>
   <link name="L_LR">
@@ -174,6 +251,10 @@
         <mesh filename="package://hoap3_description/meshes/LLEG_LINK01.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="5.87e-02"/>
+      <origin xyz="0.00300449 -0.00225088 0.0335846"/>
+    </intertial>
   </link>
   <link name="L_LAA">
     <visual>
@@ -182,6 +263,10 @@
         <mesh filename="package://hoap3_description/meshes/LLEG_LINK02.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="2.10e-01"/>
+      <origin xyz="-0.00271179 -0.00124723 0.00238665"/>
+    </intertial>
   </link>
   <link name="L_LFE">
     <visual>
@@ -190,6 +275,10 @@
         <mesh filename="package://hoap3_description/meshes/LLEG_LINK03.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="5.19e-01"/>
+      <origin xyz="-0.0699224 0.00627642 0.00331502"/>
+    </intertial>
   </link>
   <link name="L_KN">
     <visual>
@@ -198,6 +287,10 @@
         <mesh filename="package://hoap3_description/meshes/LLEG_LINK04.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="3.28e-01"/>
+      <origin xyz="-0.0508386 0.00537031 0.00487773"/>
+    </intertial>
   </link>
   <link name="L_AFE">
     <visual>
@@ -206,6 +299,10 @@
         <mesh filename="package://hoap3_description/meshes/LLEG_LINK05.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="1.95e-01"/>
+      <origin xyz="0.00292057 0.00369219 0.00119731"/>
+    </intertial>
   </link>
   <link name="L_AAA">
     <visual>
@@ -214,6 +311,10 @@
         <mesh filename="package://hoap3_description/meshes/LLEG_LINK06.dae"/>
       </geometry>
     </visual>
+    <intertial>
+      <mass value="1.54e-01"/>
+      <origin xyz="-0.0292236 -0.0033462 0.00827642"/>
+    </intertial>
   </link>
   <link name="L_FOOT"/>
   <joint name="Base-CHEST-joint" type="fixed">
@@ -233,7 +334,7 @@
     <child link="H_TILT"/>
     <axis xyz="0 0 -1"/>
     <limit effort="100" lower="-0.785398163397" upper="0.261799387799" velocity="100"/>
-    <origin rpy="1.57079632679 -0.0 0.0" xyz="0.015 0.0 0.103"/>
+    <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.015 0.0 0.103"/>
   </joint>
   <joint name="H_TILT-H_ROLL-joint" type="continuous">
     <parent link="H_TILT"/>
@@ -267,21 +368,21 @@
     <child link="R_SFE"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="2.44346095279" velocity="100"/>
-    <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 -0.111 0.0"/>
+    <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 -0.111 0.0"/>
   </joint>
   <joint name="R_SFE-R_SAA-joint" type="continuous">
     <parent link="R_SFE"/>
     <child link="R_SAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="0.0" velocity="100"/>
-    <origin rpy="0.0 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
+    <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
   <joint name="R_SAA-R_SHR-joint" type="continuous">
     <parent link="R_SAA"/>
     <child link="R_SHR"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="1.57079632679" velocity="100"/>
-    <origin rpy="0.0 -1.57079632679 0.0" xyz="0.0 -0.111 0.0"/>
+    <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 -0.111 0.0"/>
   </joint>
   <joint name="R_SHR-R_EB-joint" type="continuous">
     <parent link="R_SHR"/>
@@ -302,21 +403,21 @@
     <child link="L_SFE"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="2.44346095279" velocity="100"/>
-    <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.111 0.0"/>
+    <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.111 0.0"/>
   </joint>
   <joint name="L_SFE-L_SAA-joint" type="continuous">
     <parent link="L_SFE"/>
     <child link="L_SAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="0.0" upper="1.57079632679" velocity="100"/>
-    <origin rpy="0.0 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
+    <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
   <joint name="L_SAA-L_SHR-joint" type="continuous">
     <parent link="L_SAA"/>
     <child link="L_SHR"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.58824961931" upper="1.58824961931" velocity="100"/>
-    <origin rpy="0.0 -1.57079632679 0.0" xyz="0.0 -0.111 0.0"/>
+    <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 -0.111 0.0"/>
   </joint>
   <joint name="L_SHR-L_EB-joint" type="continuous">
     <parent link="L_SHR"/>
@@ -330,7 +431,7 @@
     <child link="L_WR"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="1.57079632679" velocity="100"/>
-    <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.133 0.0"/>
+    <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.133 0.0"/>
   </joint>
   <joint name="CHEST-WAIST-joint" type="continuous">
     <parent link="CHEST"/>
@@ -344,14 +445,14 @@
     <child link="R_LR"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="0.523598775598" velocity="100"/>
-    <origin rpy="0.0 -1.57079632679 0.0" xyz="-0.035 -0.055 0.039"/>
+    <origin rpy="-1.57079632679 1.57079632679 0.0" xyz="-0.035 -0.055 0.039"/>
   </joint>
   <joint name="R_LR-R_LAA-joint" type="continuous">
     <parent link="R_LR"/>
     <child link="R_LAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-0.523598775598" upper="0.349065850399" velocity="100"/>
-    <origin rpy="0.0 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
+    <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
   <joint name="R_LAA-R_LFE-joint" type="continuous">
     <parent link="R_LAA"/>
@@ -379,7 +480,7 @@
     <child link="R_AAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-0.436332312999" upper="0.436332312999" velocity="100"/>
-    <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
+    <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
   <joint name="R_AAA-R_FOOT-joint" type="fixed">
     <parent link="R_AAA"/>
@@ -391,14 +492,14 @@
     <child link="L_LR"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-0.523598775598" upper="1.57079632679" velocity="100"/>
-    <origin rpy="0.0 -1.57079632679 0.0" xyz="-0.035 -0.055 -0.039"/>
+    <origin rpy="-1.57079632679 1.57079632679 0.0" xyz="-0.035 -0.055 -0.039"/>
   </joint>
   <joint name="L_LR-L_LAA-joint" type="continuous">
     <parent link="L_LR"/>
     <child link="L_LAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-0.349065850399" upper="0.523598775598" velocity="100"/>
-    <origin rpy="0.0 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
+    <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
   <joint name="L_LAA-L_LFE-joint" type="continuous">
     <parent link="L_LAA"/>
@@ -426,7 +527,7 @@
     <child link="L_AAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-0.436332312999" upper="0.436332312999" velocity="100"/>
-    <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
+    <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
   <joint name="L_AAA-L_FOOT-joint" type="fixed">
     <parent link="L_AAA"/>
