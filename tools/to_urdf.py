@@ -58,7 +58,7 @@ def gettype(type):
     if type == "None":
         return "fixed"
     if type == "Revolute":
-        return "continuous"
+        return "revolute"
 
 def getpose(pose, parent = None):
 
@@ -190,7 +190,7 @@ def makejoints(node, parent, urdf_robot, apply_zeros = False):
 
         xyz, rpy, abs_orientation = getpose(joint.find("BaseFrame"), None) # -> do not apply inverse of parent rotation
         type = gettype(joint.get('type'))
-        urdf_joint = ET.SubElement(urdf_robot, "joint", {"name": "%s-%s-joint" % (parent["name"], name), "type": type})
+        urdf_joint = ET.SubElement(urdf_robot, "joint", {"name": "%s_%s_joint" % (parent["name"], name), "type": type})
         urdf_parent = ET.SubElement(urdf_joint, "parent", {"link": parent["name"]})
         urdf_child = ET.SubElement(urdf_joint, "child", {"link": name})
 

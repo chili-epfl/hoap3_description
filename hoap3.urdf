@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <robot name="hoap-3">
-  <link name="Base"/>
+  <link name="base_link"/>
   <link name="CHEST">
     <visual>
       <origin rpy="0.0 -0.0 0.0" xyz="0.035 0.0 -0.125"/>
@@ -97,9 +97,17 @@
   </link>
   <link name="R_WR">
     <visual>
-      <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.133"/>
+      <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <mesh filename="package://hoap3_description/meshes/RARM_LINK05.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="R_HAND">
+    <visual>
+      <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://hoap3_description/meshes/RHAND.dae"/>
       </geometry>
     </visual>
   </link>
@@ -153,9 +161,17 @@
   </link>
   <link name="L_WR">
     <visual>
-      <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0 -0.133"/>
+      <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <mesh filename="package://hoap3_description/meshes/LARM_LINK05.dae"/>
+      </geometry>
+    </visual>
+  </link>
+   <link name="L_HAND">
+    <visual>
+      <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://hoap3_description/meshes/LHAND.dae"/>
       </geometry>
     </visual>
   </link>
@@ -317,219 +333,229 @@
     </intertial>
   </link>
   <link name="L_FOOT"/>
-  <joint name="Base-CHEST-joint" type="fixed">
-    <parent link="Base"/>
+  <joint name="Base_CHEST_joint" type="fixed">
+    <parent link="base_link"/>
     <child link="CHEST"/>
     <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.5"/>
   </joint>
-  <joint name="CHEST-H_PAN-joint" type="continuous">
+  <joint name="CHEST_H_PAN_joint" type="revolute">
     <parent link="CHEST"/>
     <child link="H_PAN"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.0471975512" upper="1.0471975512" velocity="100"/>
     <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="H_PAN-H_TILT-joint" type="continuous">
+  <joint name="H_PAN_H_TILT_joint" type="revolute">
     <parent link="H_PAN"/>
     <child link="H_TILT"/>
     <axis xyz="0 0 -1"/>
     <limit effort="100" lower="-0.785398163397" upper="0.261799387799" velocity="100"/>
     <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.015 0.0 0.103"/>
   </joint>
-  <joint name="H_TILT-H_ROLL-joint" type="continuous">
+  <joint name="H_TILT_H_ROLL_joint" type="revolute">
     <parent link="H_TILT"/>
     <child link="H_ROLL"/>
     <axis xyz="-1 0 0"/>
     <limit effort="100" lower="-0.261799387799" upper="0.261799387799" velocity="100"/>
     <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="H_ROLL-HEAD-joint" type="fixed">
+  <joint name="H_ROLL_HEAD_joint" type="fixed">
     <parent link="H_ROLL"/>
     <child link="HEAD"/>
     <origin rpy="0.0 -0.0 0.0" xyz="0.0 -0.07 0.0"/>
   </joint>
-  <joint name="H_ROLL-EYE-joint" type="fixed">
+  <joint name="H_ROLL_EYE_joint" type="fixed">
     <parent link="H_ROLL"/>
     <child link="EYE"/>
     <origin rpy="0.0 -0.0 0.0" xyz="0.06 0.004 0.0"/>
   </joint>
-  <joint name="H_ROLL-REYE-joint" type="fixed">
+  <joint name="H_ROLL_REYE_joint" type="fixed">
     <parent link="H_ROLL"/>
     <child link="REYE"/>
     <origin rpy="0.0 -0.0 0.0" xyz="0.05 0.004 -0.03"/>
   </joint>
-  <joint name="H_ROLL-LEYE-joint" type="fixed">
+  <joint name="H_ROLL_LEYE_joint" type="fixed">
     <parent link="H_ROLL"/>
     <child link="LEYE"/>
     <origin rpy="0.0 -0.0 0.0" xyz="0.05 0.004 0.03"/>
   </joint>
-  <joint name="CHEST-R_SFE-joint" type="continuous">
+  <joint name="CHEST_R_SFE_joint" type="revolute">
     <parent link="CHEST"/>
     <child link="R_SFE"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="2.44346095279" velocity="100"/>
     <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 -0.111 0.0"/>
   </joint>
-  <joint name="R_SFE-R_SAA-joint" type="continuous">
+  <joint name="R_SFE_R_SAA_joint" type="revolute">
     <parent link="R_SFE"/>
     <child link="R_SAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="0.0" velocity="100"/>
     <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="R_SAA-R_SHR-joint" type="continuous">
+  <joint name="R_SAA_R_SHR_joint" type="revolute">
     <parent link="R_SAA"/>
     <child link="R_SHR"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="1.57079632679" velocity="100"/>
     <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 -0.111 0.0"/>
   </joint>
-  <joint name="R_SHR-R_EB-joint" type="continuous">
+  <joint name="R_SHR_R_EB_joint" type="revolute">
     <parent link="R_SHR"/>
     <child link="R_EB"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-2.00712863979" upper="0.0" velocity="100"/>
     <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="R_EB-R_WR-joint" type="continuous">
+  <joint name="R_EB_R_WR_joint" type="revolute">
     <parent link="R_EB"/>
     <child link="R_WR"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.0471975512" upper="1.0471975512" velocity="100"/>
-    <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.133 0.0"/>
+    <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0478 0.0"/>
   </joint>
-  <joint name="CHEST-L_SFE-joint" type="continuous">
+  <joint name="R_WR_R_HAND_joint" type="fixed">
+    <parent link="R_WR"/>
+    <child link="R_HAND"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.055"/>
+  </joint>
+  <joint name="CHEST_L_SFE_joint" type="revolute">
     <parent link="CHEST"/>
     <child link="L_SFE"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="2.44346095279" velocity="100"/>
     <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.111 0.0"/>
   </joint>
-  <joint name="L_SFE-L_SAA-joint" type="continuous">
+  <joint name="L_SFE_L_SAA_joint" type="revolute">
     <parent link="L_SFE"/>
     <child link="L_SAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="0.0" upper="1.57079632679" velocity="100"/>
     <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="L_SAA-L_SHR-joint" type="continuous">
+  <joint name="L_SAA_L_SHR_joint" type="revolute">
     <parent link="L_SAA"/>
     <child link="L_SHR"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.58824961931" upper="1.58824961931" velocity="100"/>
     <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 -0.111 0.0"/>
   </joint>
-  <joint name="L_SHR-L_EB-joint" type="continuous">
+  <joint name="L_SHR_L_EB_joint" type="revolute">
     <parent link="L_SHR"/>
     <child link="L_EB"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-2.00712863979" upper="0.0" velocity="100"/>
     <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="L_EB-L_WR-joint" type="continuous">
+  <joint name="L_EB_L_WR_joint" type="revolute">
     <parent link="L_EB"/>
     <child link="L_WR"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="1.57079632679" velocity="100"/>
-    <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.133 0.0"/>
+    <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.0478 0.0"/>
   </joint>
-  <joint name="CHEST-WAIST-joint" type="continuous">
+  <joint name="L_WR_L_HAND_joint" type="fixed">
+    <parent link="L_WR"/>
+    <child link="L_HAND"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.055"/>
+  </joint>
+  <joint name="CHEST_WAIST_joint" type="revolute">
     <parent link="CHEST"/>
     <child link="WAIST"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="0.0" upper="0.610865238198" velocity="100"/>
     <origin rpy="1.57079632679 -0.0 0.0" xyz="0.035 0.0 -0.125"/>
   </joint>
-  <joint name="WAIST-R_LR-joint" type="continuous">
+  <joint name="WAIST_R_LR_joint" type="revolute">
     <parent link="WAIST"/>
     <child link="R_LR"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="0.523598775598" velocity="100"/>
     <origin rpy="-1.57079632679 1.57079632679 0.0" xyz="-0.035 -0.055 0.039"/>
   </joint>
-  <joint name="R_LR-R_LAA-joint" type="continuous">
+  <joint name="R_LR_R_LAA_joint" type="revolute">
     <parent link="R_LR"/>
     <child link="R_LAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-0.523598775598" upper="0.349065850399" velocity="100"/>
     <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="R_LAA-R_LFE-joint" type="continuous">
+  <joint name="R_LAA_R_LFE_joint" type="revolute">
     <parent link="R_LAA"/>
     <child link="R_LFE"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.3962634016" upper="1.2217304764" velocity="100"/>
     <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="R_LFE-R_KN-joint" type="continuous">
+  <joint name="R_LFE_R_KN_joint" type="revolute">
     <parent link="R_LFE"/>
     <child link="R_KN"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="0.0872664625997" upper="2.26892802759" velocity="100"/>
     <origin rpy="0.0 -0.0 0.0" xyz="-0.105 0.0 0.0"/>
   </joint>
-  <joint name="R_KN-R_AFE-joint" type="continuous">
+  <joint name="R_KN_R_AFE_joint" type="revolute">
     <parent link="R_KN"/>
     <child link="R_AFE"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.0471975512" upper="1.0471975512" velocity="100"/>
     <origin rpy="0.0 -0.0 0.0" xyz="-0.105 0.0 0.0"/>
   </joint>
-  <joint name="R_AFE-R_AAA-joint" type="continuous">
+  <joint name="R_AFE_R_AAA_joint" type="revolute">
     <parent link="R_AFE"/>
     <child link="R_AAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-0.436332312999" upper="0.436332312999" velocity="100"/>
     <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="R_AAA-R_FOOT-joint" type="fixed">
+  <joint name="R_AAA_R_FOOT_joint" type="fixed">
     <parent link="R_AAA"/>
     <child link="R_FOOT"/>
     <origin rpy="0.0 -0.0 0.0" xyz="-0.04 0.005 0.014"/>
   </joint>
-  <joint name="WAIST-L_LR-joint" type="continuous">
+  <joint name="WAIST_L_LR_joint" type="revolute">
     <parent link="WAIST"/>
     <child link="L_LR"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-0.523598775598" upper="1.57079632679" velocity="100"/>
     <origin rpy="-1.57079632679 1.57079632679 0.0" xyz="-0.035 -0.055 -0.039"/>
   </joint>
-  <joint name="L_LR-L_LAA-joint" type="continuous">
+  <joint name="L_LR_L_LAA_joint" type="revolute">
     <parent link="L_LR"/>
     <child link="L_LAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-0.349065850399" upper="0.523598775598" velocity="100"/>
     <origin rpy="1.57079632679 -1.57079632679 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="L_LAA-L_LFE-joint" type="continuous">
+  <joint name="L_LAA_L_LFE_joint" type="revolute">
     <parent link="L_LAA"/>
     <child link="L_LFE"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.3962634016" upper="1.2217304764" velocity="100"/>
     <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="L_LFE-L_KN-joint" type="continuous">
+  <joint name="L_LFE_L_KN_joint" type="revolute">
     <parent link="L_LFE"/>
     <child link="L_KN"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="0.0872664625997" upper="2.26892802759" velocity="100"/>
     <origin rpy="0.0 -0.0 0.0" xyz="-0.105 0.0 0.0"/>
   </joint>
-  <joint name="L_KN-L_AFE-joint" type="continuous">
+  <joint name="L_KN_L_AFE_joint" type="revolute">
     <parent link="L_KN"/>
     <child link="L_AFE"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.0471975512" upper="1.0471975512" velocity="100"/>
     <origin rpy="0.0 -0.0 0.0" xyz="-0.105 0.0 0.0"/>
   </joint>
-  <joint name="L_AFE-L_AAA-joint" type="continuous">
+  <joint name="L_AFE_L_AAA_joint" type="revolute">
     <parent link="L_AFE"/>
     <child link="L_AAA"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-0.436332312999" upper="0.436332312999" velocity="100"/>
     <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
   </joint>
-  <joint name="L_AAA-L_FOOT-joint" type="fixed">
+  <joint name="L_AAA_L_FOOT_joint" type="fixed">
     <parent link="L_AAA"/>
     <child link="L_FOOT"/>
     <origin rpy="0.0 -0.0 0.0" xyz="-0.04 -0.005 0.014"/>
