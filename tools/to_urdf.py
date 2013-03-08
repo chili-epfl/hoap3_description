@@ -19,7 +19,7 @@ def prettify(elem):
 shapexml = "shape.xml"
 structurexml = "structure.xml"
 
-robot_name = "hoap-3"
+robot_name = "hoap3"
 
 
 shape = ET.parse(shapexml)

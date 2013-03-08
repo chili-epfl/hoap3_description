@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<robot name="hoap-3">
+<robot name="hoap3">
   <link name="base_link"/>
   <link name="CHEST">
     <visual>
