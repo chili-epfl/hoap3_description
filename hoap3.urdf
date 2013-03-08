@@ -3,7 +3,7 @@
   <link name="base_link"/>
   <link name="CHEST">
     <visual>
-      <origin rpy="0.0 -0.0 0.0" xyz="0.035 0.0 -0.125"/>
+      <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <mesh filename="package://hoap3_description/meshes/BODY_LINK01.dae"/>
       </geometry>
@@ -175,18 +175,6 @@
       </geometry>
     </visual>
   </link>
-  <link name="WAIST">
-    <visual>
-      <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
-      <geometry>
-        <mesh filename="package://hoap3_description/meshes/BODY_LINK02.dae"/>
-      </geometry>
-    </visual>
-    <intertial>
-      <mass value="4.17e-01"/>
-      <origin xyz="-0.0322707 0.0111375 -0.000329172"/>
-    </intertial>
-  </link>
   <link name="R_LR">
     <visual>
       <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -333,17 +321,37 @@
     </intertial>
   </link>
   <link name="L_FOOT"/>
-  <joint name="Base_CHEST_joint" type="fixed">
+  <link name="WAIST">
+    <visual>
+      <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://hoap3_description/meshes/BODY_LINK02.dae"/>
+      </geometry>
+    </visual>
+    <intertial>
+      <mass value="4.17e-01"/>
+      <origin xyz="-0.0322707 0.0111375 -0.000329172"/>
+    </intertial>
+  </link>
+
+  <joint name="base_link_WAIST_joint" type="fixed">
     <parent link="base_link"/>
+    <child link="WAIST"/>
+    <origin rpy="1.57079632679 -0.0 0.0" xyz="0.0 0.0 0.0"/>
+  </joint>
+  <joint name="WAIST_CHEST_joint" type="revolute">
+    <parent link="WAIST"/>
     <child link="CHEST"/>
-    <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.5"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" lower="0.0" upper="0.610865238198" velocity="100"/>
+    <origin rpy="-1.57079632679 -0.0 0.0" xyz="-0.0 0.0 0.0"/>
   </joint>
   <joint name="CHEST_H_PAN_joint" type="revolute">
     <parent link="CHEST"/>
     <child link="H_PAN"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.0471975512" upper="1.0471975512" velocity="100"/>
-    <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
+    <origin rpy="0.0 -0.0 0.0" xyz="-0.035 0.0 0.125"/>
   </joint>
   <joint name="H_PAN_H_TILT_joint" type="revolute">
     <parent link="H_PAN"/>
@@ -384,7 +392,7 @@
     <child link="R_SFE"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="2.44346095279" velocity="100"/>
-    <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 -0.111 0.0"/>
+    <origin rpy="-1.57079632679 -0.0 0.0" xyz="-0.035 -0.111 0.125"/>
   </joint>
   <joint name="R_SFE_R_SAA_joint" type="revolute">
     <parent link="R_SFE"/>
@@ -424,7 +432,7 @@
     <child link="L_SFE"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-1.57079632679" upper="2.44346095279" velocity="100"/>
-    <origin rpy="-1.57079632679 -0.0 0.0" xyz="0.0 0.111 0.0"/>
+    <origin rpy="-1.57079632679 -0.0 0.0" xyz="-0.035 0.111 0.125"/>
   </joint>
   <joint name="L_SFE_L_SAA_joint" type="revolute">
     <parent link="L_SFE"/>
@@ -458,13 +466,6 @@
     <parent link="L_WR"/>
     <child link="L_HAND"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.055"/>
-  </joint>
-  <joint name="CHEST_WAIST_joint" type="revolute">
-    <parent link="CHEST"/>
-    <child link="WAIST"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="100" lower="0.0" upper="0.610865238198" velocity="100"/>
-    <origin rpy="1.57079632679 -0.0 0.0" xyz="0.035 0.0 -0.125"/>
   </joint>
   <joint name="WAIST_R_LR_joint" type="revolute">
     <parent link="WAIST"/>
