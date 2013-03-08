@@ -1,0 +1,4 @@
+<launch>
+    <param name="robot_description" textfile="$(find hoap3_description)/hoap3.urdf" />
+    <param name="robot_description_semantic" textfile="$(find hoap3_moveit_config)/config/hoap3.srdf" />
+</launch>
