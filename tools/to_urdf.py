@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 
+import sys
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import re
@@ -179,7 +180,7 @@ def makelinks(node, urdf_robot):
  
 
 
-def makejoints(node, parent, urdf_robot, apply_zeros = False):
+def makejoints(node, parent, urdf_robot, print_zeros = False):
 
     name = node.text.strip()
     offset = [0.0,0.0,0.0]
@@ -190,20 +191,18 @@ def makejoints(node, parent, urdf_robot, apply_zeros = False):
 
         xyz, rpy, abs_orientation = getpose(joint.find("BaseFrame"), None) # -> do not apply inverse of parent rotation
         type = gettype(joint.get('type'))
-        urdf_joint = ET.SubElement(urdf_robot, "joint", {"name": "%s_%s_joint" % (parent["name"], name), "type": type})
+        joint_name = "%s_%s_joint" % (parent["name"], name)
+        urdf_joint =  ET.SubElement(urdf_robot, "joint", {"name": joint_name, "type": type})
         urdf_parent = ET.SubElement(urdf_joint, "parent", {"link": parent["name"]})
         urdf_child = ET.SubElement(urdf_joint, "child", {"link": name})
 
         axis = getaxis(joint)
 
-        if apply_zeros:
+        if print_zeros:
             zero = joint.find("Zero")
             if zero is not None:
                 delta = math.radians(float(zero.text))
-
-            if axis:
-                offset = [a * delta for a in axis]
-                rpy = [d + o for d,o in zip(rpy, parent["offset"])]
+                sys.stdout.write("%s: %s," % (joint_name, delta))
 
         if axis:
             urdf_axis = ET.SubElement(urdf_joint, "axis", {"xyz": "{0} {1} {2}".format(*axis)})
@@ -217,10 +216,28 @@ def makejoints(node, parent, urdf_robot, apply_zeros = False):
     children = node.find('Children')
     if children is not None:
         for child in children:
-            makejoints(child, {"name":name, "offset": offset, "abs_orientation": abs_orientation}, urdf_robot, apply_zeros)
+            makejoints(child, {"name":name, "offset": offset, "abs_orientation": abs_orientation}, urdf_robot, print_zeros)
 
+def usage():
+    print("""Converts a LASA RobotToolKit robot description to URDF.
 
-makelinks(root, robot)
-makejoints(root, None, robot, apply_zeros = False)
+The script expects to find 'structure.xml' and 'shape.xml' in the current directory.
+Currently, the robots name must be set directly in this script source.
 
-print(prettify(robot))
+With the option --zeros, it prints out a YAML file with rest values of joints.""")
+
+if __name__ == "__main__":
+    if sys.argv[1] in ["-h", "--help"]:
+        usage()
+        sys.exit(1)
+    if sys.argv[1] == "--zeros":
+        sys.stdout.write("zeros: {")
+        makejoints(root, None, robot, print_zeros = True)
+        print("}")
+
+    else:
+
+        makelinks(root, robot)
+        makejoints(root, None, robot)
+
+        print(prettify(robot))

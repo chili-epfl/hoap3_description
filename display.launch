@@ -2,7 +2,9 @@
 	<arg name="gui" default="False" />
 	<param name="robot_description" textfile="$(find hoap3_description)/hoap3.urdf" />
 	<param name="use_gui" value="$(arg gui)"/>
-	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+	<rosparam command="load" file="$(find hoap3_description)/zeros.yaml" />
+    </node>
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 
   <node name="$(anon rviz)" pkg="rviz" type="rviz" respawn="false" output="screen"/>
